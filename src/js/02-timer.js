@@ -1,5 +1,7 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+console.log(Notify);
 
 const inputEl = document.querySelector('#datetime-picker');
 const butnStart = document.querySelector('[data-start]');
@@ -18,14 +20,15 @@ const options = {
     defaultDate: new Date(),
     minuteIncrement: 1,
     onClose(selectedDates) {
-      console.log(selectedDates[0])
+    //   console.log(selectedDates[0])
       if (currentTime <= calendarTime){
         butnStart.disabled = false;
         
       }
       else {
         butnStart.disabled = true;
-        window.alert("Please choose a date in the future");
+        // window.alert("Please choose a date in the future");
+        Notify.failure('Please choose a date in the future');
     }
        },
   };
@@ -40,8 +43,8 @@ butnStart.disabled = true;
 
 function onCalendar() {
   calendarTime = dataPickr.selectedDates[0].getTime()
-  console.log('currentDate :', currentTime);
-  console.log("calendar :", calendarTime);
+//   console.log('currentDate :', currentTime);
+//   console.log("calendar :", calendarTime);
  }
 
  function onCalendarTime() {   
@@ -52,9 +55,9 @@ timerId = setInterval(() => {
 
     const getTime = calendarTime - currentTime
     const objektTime = convertMs(getTime);
-    console.log(getTime);
-    console.log(calendarTime);
-    console.log(currentTime);
+    // console.log(getTime);
+    // console.log(calendarTime);
+    // console.log(currentTime);
     
     if (getTime>0)
     {
@@ -69,8 +72,8 @@ timerId = setInterval(() => {
     dataMinutes.textContent="00";
     dataSeconds.textContent="00";
     stopTimer(timerId) 
-    window.alert('time is over');
-   
+    // window.alert('time is over');
+    Notify.success('time is over');
     }
 },1000)
  }
