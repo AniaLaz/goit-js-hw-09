@@ -9,7 +9,7 @@ const dataMinutes = document.querySelector('[data-minutes]');
 const dataSeconds = document.querySelector('[data-seconds]');
 
 let currentDate = new Date()
-const currentTime = currentDate.getTime()
+let currentTime = currentDate.getTime()
 let calendarTime = null
 
 const options = {
@@ -47,8 +47,9 @@ function onCalendar() {
  function onCalendarTime() {   
 
 timerId = setInterval(() => {
-    // currentDate = new Date()
-    // calendarTime = dataPickr.selectedDates[0]
+    currentDate = new Date()
+    currentTime = currentDate.getTime()
+
     const getTime = calendarTime - currentTime
     const objektTime = convertMs(getTime);
     console.log(getTime);
@@ -67,10 +68,16 @@ timerId = setInterval(() => {
     dataHours.textContent="00";
     dataMinutes.textContent="00";
     dataSeconds.textContent="00";
-    window.alert('time is over')
+    stopTimer(timerId) 
+    window.alert('time is over');
+   
     }
 },1000)
  }
+ function stopTimer(timerId) {
+    clearInterval(timerId);
+   }
+
  function convertMs(ms) {
     // Number of milliseconds per unit of time
     const second = 1000;
@@ -98,8 +105,3 @@ timerId = setInterval(() => {
 //   console.log(convertMs(2000)); // {days: 0, hours: 0, minutes: 0, seconds: 2}
 //   console.log(convertMs(140000)); // {days: 0, hours: 0, minutes: 2, seconds: 20}
 //   console.log(convertMs(24140000)); // {days: 0, hours: 6 minutes: 42, seconds: 20}
-
-
-
-
-
