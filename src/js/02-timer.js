@@ -68,14 +68,15 @@ timerId = setInterval(() => {
     dataHours.textContent="00";
     dataMinutes.textContent="00";
     dataSeconds.textContent="00";
-    stopTimer(timerId) 
+    stopTimer(timerId); 
     // window.alert('time is over');
-    Notify.info('time is over');
+    
     }
 },1000)
  }
  function stopTimer(timerId) {
     clearInterval(timerId);
+    Notify.info('time is over');
    }
 
  function convertMs(ms) {
