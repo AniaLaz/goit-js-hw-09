@@ -55,10 +55,7 @@ timerId = setInterval(() => {
 
     const getTime = calendarTime - currentTime
     const objektTime = convertMs(getTime);
-    // console.log(getTime);
-    // console.log(calendarTime);
-    // console.log(currentTime);
-    
+   
     if (getTime>0)
     {
     dataDays.textContent=addLeadingZero(objektTime.days);
