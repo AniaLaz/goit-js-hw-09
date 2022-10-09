@@ -13,6 +13,7 @@ const dataSeconds = document.querySelector('[data-seconds]');
 let currentDate = new Date()
 let currentTime = currentDate.getTime()
 let calendarTime = null
+let timerId = null
 
 const options = {
     enableTime: true,
