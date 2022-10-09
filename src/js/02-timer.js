@@ -73,7 +73,7 @@ timerId = setInterval(() => {
     dataSeconds.textContent="00";
     stopTimer(timerId) 
     // window.alert('time is over');
-    Notify.success('time is over');
+    Notify.info('time is over');
     }
 },1000)
  }
